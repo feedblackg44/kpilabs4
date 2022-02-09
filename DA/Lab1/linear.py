@@ -1,32 +1,35 @@
-from sympy import *
-import math
+from sympy import *                                         # Імпортуємо повністю бібліотеку sympy для більш зручної роботи з функціями
+import math                                                 # Імпортуємо бібліотеку math для де-яких констант
 
-def squareSum(x):
-    sumOut = 0
-    for i in range(len(x)):
-        sumOut += x[i]**2
-    return sumOut
+def squareSum(x):                                           # Функція для обчислення суми квадратів масиву
+    sumOut = 0                                              #
+    for i in range(len(x)):                                 #
+        sumOut += x[i]**2                                   #
+    return sumOut                                           #
 
-def multiSum(x, y):
-    sumOut = 0
-    if len(x) != len(y):
-        return -math.inf
-    for i in range(len(x)):
-        sumOut += x[i] * y[i]
-    return sumOut
+def multiSum(x, y):                                         # Функція для обчислення суми сум елементів двох масивів
+    sumOut = 0                                              #
+    if len(x) != len(y):                                    #
+        return -math.inf                                    #
+    for i in range(len(x)):                                 #
+        sumOut += x[i] * y[i]                               #
+    return sumOut                                           #
 
-def Regression(x, y, precision):
-    X = Symbol('x')
+def Regression(x, y, precision):                            # Функція лінійної регресії приймає три параметри:
+                                                            # Масив іксів з вхідного набору даних.
+                                                            # Масив ігриків з вхідного набору даних.
+                                                            # Кількість символів після коми.
+    X = Symbol('x')                                         # Визначаємо символ X для створення вихідної функції
 
-    Mx2 = 1/len(x) * squareSum(x)
-    Mx = 1/len(x) * sum(x)
-    Mxy = 1/len(x) * multiSum(x, y)
-    My = 1/len(y) * sum(y)
+    Mx2 = 1/len(x) * squareSum(x)                           # Визначаємо мат сподівання квадратів іксів
+    Mx = 1/len(x) * sum(x)                                  # Визначаємо мат сподівання іксів
+    Mxy = 1/len(x) * multiSum(x, y)                         # Визначаємо мат сподівання від ікс та ігрик
+    My = 1/len(y) * sum(y)                                  # Визначаємо мат сподівання ігриків
 
-    a = round((Mxy-Mx*My)/(Mx2-Mx**2), precision)
-    b = round((Mx2*My-Mx*Mxy)/(Mx2-Mx**2), precision)
+    a = round((Mxy-Mx*My)/(Mx2-Mx**2), precision)           # За формулами вирішення системи рахуємо а
+    b = round((Mx2*My-Mx*Mxy)/(Mx2-Mx**2), precision)       # За формулами вирішення системи рахуємо б
 
-    func = a*X+b
-    Y = lambdify(X, func)
+    func = a*X+b                                            # Створюємо вигляд лінійної регресійної функції
+    Y = lambdify(X, func)                                   # Перетворюємо вигляд функції на "лямбда" функцію
 
-    return func, Y
+    return func, Y                                          # Повертаємо вигляд та саму функцію
