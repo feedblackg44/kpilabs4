@@ -12,12 +12,19 @@ np.seterr(invalid='ignore')
 
 x = [0.28, 0.19, 0.15, 0.11, 0.09, 0.08, 0.07, 0.06]
 y = [82.16, 61.02, 44.56, 82.52, 99.19, 70.24, 63.23, 66.48]
+ESS = 0
 
 precision = 6
 
+def avg(list):
+    return sum(list) / len(list)
+
 def showResult(func, Y, name):                                                                  # Функція приймає 3 параметри: вигляд функції, функцію та назву функції
-    e = [round((y[i] - Y(x[i])) ** 2, precision) for i in range(len(x))]                        # Рахуємо масив квадратичних відхиленнь
+    global ESS
+    e = [(y[i] - Y(x[i])) ** 2 for i in range(len(x))]                                          # Рахуємо масив квадратичних відхиленнь
     S = sum(e)                                                                                  # Рахуємо суму масиву відхиленнь
+    if name == "Лінійна":
+        ESS = S                                                                                 # Зберігаємо обраховану суму відхилень лінійної регресії
 
     print(20*'#', name, 20*'#')                                                                 # Красивий
     print("Регресійна функція: y =", func)                                                      # Вивід
@@ -45,9 +52,15 @@ def showResult(func, Y, name):                                                  
 
 ########################## Linear ##########################
 
-linearFunc, linearY = linear.Regression(x, y, precision)        # Отримуємо вигляд функції та саму функцію
-showResult(linearFunc, linearY, "Лінійна")                      # Створюємо графік вихідних даних та графік
-                                                                # отриманої функції за допомогою бібліотеки pyplot
+linearFunc, linearY = linear.Regression(x, y, precision)                    # Отримуємо вигляд функції та саму функцію
+showResult(linearFunc, linearY, "Лінійна")                                  # Створюємо графік вихідних даних та графік
+                                                                            # отриманої функції за допомогою бібліотеки pyplot
+print("Коефіцієнт кореляції для лінійної залежності:",
+      round(np.corrcoef(x,y)[0][1], precision))                             # Виводимо коефіцієнт кореляції за допомогою бібліотеки numpy
+TSS = sum([(y[i] - avg(y)) ** 2 for i in range(len(y))])
+R2 = 1 - (ESS/TSS)
+print("Коефіцієнт детермінації для лінійної залежності:",
+      round(R2, precision), "\n")                                           # Рахуємо і виводимо коефіцієнт детермінації
 
 ########################## Hyperbolic ##########################
 
