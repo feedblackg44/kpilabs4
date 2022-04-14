@@ -7,21 +7,28 @@ from matplotlib import pyplot as pp
 import simpleSearch as simple
 import vidpalSearch as vidpal
 
-################################### Constants ###################################
-
 X = Symbol('X')
 Y = Symbol('Y')
 
-Func = -(1+cos(18*sqrt(X**2+Y**2)))/(X**2+Y**2+1)
-F = lambdify([X, Y], Func)
-minVars = [-5, -5]
-maxVars = [5, 5]
-minArg = [0, 0]
-minFunc = -2
-presicion = 6
-amount = 101
+################################### Constants ###################################
+
+Func = -(1+cos(18*sqrt(X**2+Y**2)))/(X**2+Y**2+1)   # Функція
+minVars = [-5, -5]                                  # Мінімальні значення
+maxVars = [5, 5]                                    # Максимальні значення
+minArg = [0, 0]                                     # Глобальний мінімум
+minFunc = -2                                        # Значення глобального мінімуму
+precision = 6                                       # Кількість знаків після коми для округлення
+amount = 101                                        # Кількість точок  для графіку
+
+N = 100                                             # Кількість точок для стохастичного пошуку
+
+T0 = 0.001                                          # Мінімальна температура
+T = 50                                              # Початкова температура
+V = 0.99                                            # Швидкість змешення температури (між 0 та 1)
 
 ################################### Functions ###################################
+
+F = lambdify([X, Y], Func)
 
 def showSurface(F, A, B, N):
     arrX = np.linspace(A[0], B[0], N)
@@ -35,20 +42,16 @@ def showSurface(F, A, B, N):
 
 ################################### Main ###################################
 
-print(Func)
-print(F(minArg[0], minArg[1]))
+print("F(x,y) =", Func)
+print("Значення функції в мінімумі:", F(minArg[0], minArg[1]))
 showSurface(F, minVars, maxVars, amount)
 
-N = 100
 simpleXY, simpleFunc = simple.Search(F, minVars, maxVars, N)
-print(round(simpleXY[0], presicion),
-      round(simpleXY[1], presicion),
-      round(simpleFunc, presicion))
+print("Методом стохастичного пошуку знайдено мінімум: A(",
+      round(simpleXY[0], precision), "; ", round(simpleXY[1], precision),
+      "). \nF(A) = ", round(simpleFunc, precision), sep='')
 
-T0 = 0.01
-T = 50
-V = 0.99
 vidpalXY, vidpalFunc = vidpal.Search(F, minVars, maxVars, T0, T, V)
-print(round(vidpalXY[0], presicion),
-      round(vidpalXY[1], presicion),
-      round(vidpalFunc, presicion))
+print("Методом імітації відпалу знайдено мінімум: B(",
+      round(vidpalXY[0], precision), "; ", round(vidpalXY[1], precision),
+      "). \nF(B) = ", round(vidpalFunc, precision), sep='')
