@@ -11,7 +11,7 @@ namespace Lab1
     public class Queries
     {   
         public Data Data { get; private set; } = new Data();
-        public IEnumerable<Worker> QueryAllWorkers() 
+        public IEnumerable<Worker> QueryAllWorkers()
         {
             var query = from x in Data.workersTable
                         select x;
@@ -126,10 +126,10 @@ namespace Lab1
         }
         public IEnumerable<SalaryByMonth> QueryUnion()
         {
-            var query = Data.salaryTable21.Union(Data.salaryTable22)
+            var query = Data.salaryTable21.Union(Data.salaryTable22, 
+                                                 new SalaryComparer())
                                           .OrderBy(x => x.Year)
-                                          .ThenBy(x => x.Month)
-                                          .Distinct(new SalaryComparer());
+                                          .ThenBy(x => x.Month);
             return query;
         }
         public IOrderedEnumerable<SalaryByMonth> QueryConcat()

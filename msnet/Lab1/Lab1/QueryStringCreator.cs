@@ -12,132 +12,132 @@ namespace Lab1
         public string AllWorkers()
         {
             var query = queries.QueryAllWorkers();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += x.ToString() + '\n';
-            return output;
+                output.Append(x.ToString() + '\n');
+            return output.ToString();
         }
         public string AllNames()
         {
             var query = queries.QueryAllNames();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += x.ToString() + '\n';
-            return output;
+                output.Append(x.ToString() + '\n');
+            return output.ToString();
         }
         public string NewObj()
         {
             var query = queries.QueryNewObj();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += String.Format("( id = {0}, Name = {1} )\n", 
-                                        x.PersonnelId.ToString(), x.Name);
-            return output;
+                output.Append(string.Format("( id = {0}, Name = {1} )\n", 
+                                        x.PersonnelId.ToString(), x.Name));
+            return output.ToString();
         }
         public string Where()
         {
             var query = queries.QueryWhere();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += x.ToString() + '\n';
-            return output;
+                output.Append(x.ToString() + '\n');
+            return output.ToString();
         }
         public string Sort()
         {
             var query = queries.QuerySort();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += x.ToString() + '\n';
-            return output;
+                output.Append(x.ToString() + '\n');
+            return output.ToString();
         }
         public string Cartesian()
         {
             var query = queries.QueryCartesian();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += String.Format("( Param1 = {0}, Param2 = {1} )\n", 
-                                        x.Param1, x.Param2);
-            return output;
+                output.Append(string.Format("( Param1 = {0}, Param2 = {1} )\n", 
+                                        x.Param1, x.Param2));
+            return output.ToString();
         }
         public string InnerJoin()
         {
             var query = queries.QueryInnerJ();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += String.Format("( Year = {0}, Month = {1}, Surname = {2}, Salary = {3} )\n",
-                                        x.Year, x.Month, x.Surname, x.Salary);
-            return output;
+                output.Append(string.Format("( Year = {0}, Month = {1}, Surname = {2}, Salary = {3} )\n",
+                                        x.Year, x.Month, x.Surname, x.Salary));
+            return output.ToString();
         }
         public string GroupJoin()
         {
             var query = queries.QueryGroupJ();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
             {
-                output += x.Name + " c персональным номером " + x.PersonnelId.ToString() + '\n';
+                output.Append(x.Name + " c персональным номером " + x.PersonnelId.ToString() + '\n');
                 foreach (var y in x.Table)
-                    output += "  " + y.ToString() + '\n';
+                    output.Append("  " + y.ToString() + '\n');
             }
-            return output;
+            return output.ToString();
         }
         public string CrossJoin()
         {
             var query = queries.QueryCrossJ();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += String.Format("( Worker = {0}, Spec = {1} )\n",
-                                        x.Worker, x.Spec);
-            return output;
+                output.Append(string.Format("( Worker = {0}, Spec = {1} )\n",
+                                            x.Worker, x.Spec));
+            return output.ToString();
         }
         public string OuterJoin()
         {
             var query = queries.QueryOuterJ();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += String.Format("( Surname = {0}, Salary = {1} )\n",
-                                        x.Surname, x.Salary);
-            return output;
+                output.Append(string.Format("( Surname = {0}, Salary = {1} )\n",
+                                            x.Surname, x.Salary));
+            return output.ToString();
         }
         public string Distinct()
         {
             var query = queries.QueryDistinct();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += x.ToString() + '\n';
-            return output;
+                output.Append(x.ToString() + '\n');
+            return output.ToString();
         }
         public string Union()
         {
             var query = queries.QueryUnion();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += x.ToString() + '\n';
-            return output;
+                output.Append(x.ToString() + '\n');
+            return output.ToString();
         }
         public string Concat()
         {
             var query = queries.QueryConcat();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += x.ToString() + '\n';
-            return output;
+                output.Append(x.ToString() + '\n');
+            return output.ToString();
         }
         public string Intersect()
         {
             var query = queries.QueryIntersect();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += x.ToString() + '\n';
-            return output;
+                output.Append(x.ToString() + '\n');
+            return output.ToString();
         }
         public string Grouping()
         {
             var query = queries.QueryGrouping();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += "На карту " + x.Key.ToString() +
-                          " за весь период было зачислено " + x.Sum.ToString() + '\n';
-            return output;
+                output.Append("На карту " + x.Key.ToString() +
+                              " за весь период было зачислено " + x.Sum.ToString() + '\n');
+            return output.ToString();
         }
     }
 }

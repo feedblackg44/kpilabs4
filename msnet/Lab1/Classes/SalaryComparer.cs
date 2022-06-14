@@ -10,13 +10,9 @@ namespace Classes
     {
         public bool Equals(SalaryByMonth x, SalaryByMonth y)
         {
-            bool Result = false;
-            if (x.Salary == y.Salary &&
-                x.Year == y.Year &&
-                x.Cardnum == y.Cardnum &&
-                x.Month == y.Month)
-                Result = true;
-            return Result;
+            return x.Salary == y.Salary &&
+                   x.Year == y.Year &&
+                   x.Month == y.Month;
         }
         public int GetHashCode(SalaryByMonth obj)
         {
