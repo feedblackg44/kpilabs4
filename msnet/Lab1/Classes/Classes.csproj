@@ -41,12 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassesForData\SalaryOfWorker.cs" />
+    <Compile Include="ClassesForData\SpecsOfWorkers.cs" />
+    <Compile Include="ClassesForData\TestClass.cs" />
+    <Compile Include="SalaryComparer.cs" />
     <Compile Include="SalaryByMonth.cs" />
+    <Compile Include="ClassesForData\SalarySum.cs" />
     <Compile Include="Speciality.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="Worker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ClassesForData\WorkerSalaryList.cs" />
     <Compile Include="WorkerSpecLink.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

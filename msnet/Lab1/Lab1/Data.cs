@@ -7,84 +7,132 @@ using Classes;
 
 namespace Lab1
 {
-    public static class Data
+    public class Data
     {
-        public static List<Speciality> specialitiesTable = new List<Speciality>()
+        public List<Speciality> specialitiesTable = new List<Speciality>()
         {
-            new Speciality(121, "Инженерия программного обеспечения"),
-            new Speciality(122, "Компьютерные науки"),
-            new Speciality(123, "Компьютерная инженерия"),
-            new Speciality(124, "Системный анализ"),
-            new Speciality(125, "Кибербезопасность"),
-            new Speciality(126, "Информационные системы и технологии"),
+            new Speciality() { Number = 121, 
+                               Name = "Инженерия программного обеспечения" },
+            new Speciality() { Number = 122, 
+                               Name = "Компьютерные науки" },
+            new Speciality() { Number = 123, 
+                               Name = "Компьютерная инженерия" },
+            new Speciality() { Number = 124, 
+                               Name = "Системный анализ" },
+            new Speciality() { Number = 125, 
+                               Name = "Кибербезопасность" },
+            new Speciality() { Number = 126, 
+                               Name = "Информационные системы и технологии" }
         };
-        public static List<Worker> workersTable = new List<Worker>()
+        public List<Worker> workersTable = new List<Worker>()
         {
-            new Worker("Илья", "Плостак", "Михайлович", 
-                       new DateTime(2002, 12, 3), 1,
-                       EduLevel.Middle, new DateTime(2021, 11, 21)),
-            new Worker("Руслан", "Неженец", "Андреевич", 
-                       new DateTime(2002, 11, 1), 2,
-                       EduLevel.High, new DateTime(2021, 11, 21)),
-            new Worker("Елизавета", "Черкасова", "Андреевна", 
-                       new DateTime(2002, 5, 22), 3,
-                       EduLevel.High, new DateTime(2022, 2, 1)),
-            new Worker("Арагорн", "Элессар", "Араторнович", 
-                       new DateTime(1977, 6, 18), 4,
-                       EduLevel.None, new DateTime(2021, 9, 19))
+            new Worker() { Name = "Илья", 
+                           Surname = "Плостак", 
+                           Patronymic = "Михайлович",
+                           Birthdate = new DateTime(2002, 12, 3), 
+                           Cardnum = 1,
+                           WorkStartDate = new DateTime(2021, 11, 21), 
+                           Education = EduLevel.Middle },
+            new Worker() { Name = "Руслан",
+                           Surname = "Неженец",
+                           Patronymic = "Андреевич",
+                           Birthdate = new DateTime(2002, 11, 1),
+                           Cardnum = 2,
+                           WorkStartDate = new DateTime(2021, 11, 21),
+                           Education = EduLevel.High },
+            new Worker() { Name = "Елизавета",
+                           Surname = "Черкасова",
+                           Patronymic = "Андреевна",
+                           Birthdate = new DateTime(2002, 5, 22),
+                           Cardnum = 3,
+                           WorkStartDate = new DateTime(2022, 2, 1),
+                           Education = EduLevel.High },
+            new Worker() { Name = "Арагорн",
+                           Surname = "Элессар",
+                           Patronymic = "Араторнович",
+                           Birthdate = new DateTime(1977, 6, 18),
+                           Cardnum = 4,
+                           WorkStartDate = new DateTime(2021, 9, 19),
+                           Education = EduLevel.None },
         };
-        public static List<SalaryByMonth> salaryTable21 = new List<SalaryByMonth>()
+        public List<SalaryByMonth> salaryTable21 = new List<SalaryByMonth>()
         {
-            new SalaryByMonth(1, Months.November, 2021, 900),
-            new SalaryByMonth(1, Months.December, 2021, 3100),
-            new SalaryByMonth(1, Months.January,  2022, 3100),
+            new SalaryByMonth() { Cardnum = 1, Month = Months.November, 
+                                  Year = 2021, Salary = 900 },
+            new SalaryByMonth() { Cardnum = 1, Month = Months.December, 
+                                  Year = 2021, Salary = 3100 },
+            new SalaryByMonth() { Cardnum = 1, Month = Months.January, 
+                                  Year = 2022, Salary = 3100},
+            
+            new SalaryByMonth() { Cardnum = 2, Month = Months.November,
+                                  Year = 2021, Salary = 1350 },
+            new SalaryByMonth() { Cardnum = 2, Month = Months.December,
+                                  Year = 2021, Salary = 4650 },
+            new SalaryByMonth() { Cardnum = 2, Month = Months.January,
+                                  Year = 2022, Salary = 4650 },
 
-            new SalaryByMonth(2, Months.November, 2021, 1350),
-            new SalaryByMonth(2, Months.December, 2021, 4650),
-            new SalaryByMonth(2, Months.January,  2022, 4650),
-
-            new SalaryByMonth(4, Months.September, 2021, 770),
-            new SalaryByMonth(4, Months.October,   2021, 2170),
-            new SalaryByMonth(4, Months.November,  2021, 2100),
-            new SalaryByMonth(4, Months.December,  2021, 2170),
-            new SalaryByMonth(4, Months.January,  2022, 2170)
+            new SalaryByMonth() { Cardnum = 4, Month = Months.September,
+                                  Year = 2021, Salary = 770 },
+            new SalaryByMonth() { Cardnum = 4, Month = Months.October,
+                                  Year = 2021, Salary = 2170 },
+            new SalaryByMonth() { Cardnum = 4, Month = Months.November,
+                                  Year = 2021, Salary = 2100 },
+            new SalaryByMonth() { Cardnum = 4, Month = Months.December,
+                                  Year = 2021, Salary = 2170 },
+            new SalaryByMonth() { Cardnum = 4, Month = Months.January,
+                                  Year = 2022, Salary = 2170 }
         };
-        public static List<SalaryByMonth> salaryTable22 = new List<SalaryByMonth>()
+        public List<SalaryByMonth> salaryTable22 = new List<SalaryByMonth>()
         {
-            new SalaryByMonth(1, Months.January,  2022, 3100),
-            new SalaryByMonth(1, Months.February, 2022, 2800),
-            new SalaryByMonth(1, Months.March,    2022, 3100),
-            new SalaryByMonth(1, Months.April,    2022, 2400),
+            new SalaryByMonth() { Cardnum = 1, Month = Months.January,
+                                  Year = 2022, Salary = 3100 },
+            new SalaryByMonth() { Cardnum = 1, Month = Months.February,
+                                  Year = 2022, Salary = 2800 },
+            new SalaryByMonth() { Cardnum = 1, Month = Months.March,
+                                  Year = 2022, Salary = 3100 },
+            new SalaryByMonth() { Cardnum = 1, Month = Months.April,
+                                  Year = 2022, Salary = 2400 },
 
-            new SalaryByMonth(2, Months.January,  2022, 4650),
-            new SalaryByMonth(2, Months.February, 2022, 4200),
-            new SalaryByMonth(2, Months.March,    2022, 4650),
-            new SalaryByMonth(2, Months.April,    2022, 3600),
+            new SalaryByMonth() { Cardnum = 2, Month = Months.January,
+                                  Year = 2022, Salary = 4650 },
+            new SalaryByMonth() { Cardnum = 2, Month = Months.February,
+                                  Year = 2022, Salary = 4200 },
+            new SalaryByMonth() { Cardnum = 2, Month = Months.March,
+                                  Year = 2022, Salary = 4650 },
+            new SalaryByMonth() { Cardnum = 2, Month = Months.April,
+                                  Year = 2022, Salary = 3600 },
 
-            new SalaryByMonth(3, Months.February, 2022, 4200),
-            new SalaryByMonth(3, Months.March,    2022, 4650),
-            new SalaryByMonth(3, Months.April,    2022, 3600),
+            new SalaryByMonth() { Cardnum = 3, Month = Months.February,
+                                  Year = 2022, Salary = 4200 },
+            new SalaryByMonth() { Cardnum = 3, Month = Months.March,
+                                  Year = 2022, Salary = 4650 },
+            new SalaryByMonth() { Cardnum = 3, Month = Months.April,
+                                  Year = 2022, Salary = 3600 },
 
-            new SalaryByMonth(4, Months.January,  2022, 2170),
-            new SalaryByMonth(4, Months.February, 2022, 1960),
-            new SalaryByMonth(4, Months.March,    2022, 2170),
-            new SalaryByMonth(4, Months.April,    2022, 1680),
+            new SalaryByMonth() { Cardnum = 4, Month = Months.January,
+                                  Year = 2022, Salary = 2170 },
+            new SalaryByMonth() { Cardnum = 4, Month = Months.February,
+                                  Year = 2022, Salary = 1960 },
+            new SalaryByMonth() { Cardnum = 4, Month = Months.March,
+                                  Year = 2022, Salary = 2170 },
+            new SalaryByMonth() { Cardnum = 4, Month = Months.April,
+                                  Year = 2022, Salary = 1680 },
         };
-        public static List<WorkerSpecLink> linksTable = new List<WorkerSpecLink>()
+        public List<WorkerSpecLink> linksTable = new List<WorkerSpecLink>()
         {
-            new WorkerSpecLink(1, 122),
-            new WorkerSpecLink(1, 126),
+            new WorkerSpecLink() { Cardnum = 1, Specnum = 122 },
+            new WorkerSpecLink() { Cardnum = 1, Specnum = 126 },
 
-            new WorkerSpecLink(2, 121),
-            new WorkerSpecLink(2, 123),
-            new WorkerSpecLink(2, 126),
+            new WorkerSpecLink() { Cardnum = 2, Specnum = 121 },
+            new WorkerSpecLink() { Cardnum = 2, Specnum = 123 },
+            new WorkerSpecLink() { Cardnum = 2, Specnum = 126 },
 
-            new WorkerSpecLink(3, 124),
-            new WorkerSpecLink(3, 125),
+            new WorkerSpecLink() { Cardnum = 3, Specnum = 124 },
+            new WorkerSpecLink() { Cardnum = 3, Specnum = 125 },
 
-            new WorkerSpecLink(4, 121),
-            new WorkerSpecLink(4, 122),
-            new WorkerSpecLink(4, 126),
+            new WorkerSpecLink() { Cardnum = 4, Specnum = 121 },
+            new WorkerSpecLink() { Cardnum = 4, Specnum = 122 },
+            new WorkerSpecLink() { Cardnum = 4, Specnum = 126 },
         };
     }
 }

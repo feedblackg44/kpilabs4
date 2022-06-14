@@ -29,31 +29,11 @@ namespace Classes
     }
     public static class Tools
     {
-        public static string ruEduLevel(EduLevel eduLevel)
+        public static Dictionary<EduLevel, String> ruEduLevel = new Dictionary<EduLevel, string>()
         {
-            if (eduLevel == EduLevel.High)
-                return "Высшее";
-            else if (eduLevel == EduLevel.Middle)
-                return "Среднее";
-            else
-                return "Без образования";
-        }
-    }
-    public class SalaryComparer : IEqualityComparer<SalaryByMonth>
-    {
-        public bool Equals(SalaryByMonth x, SalaryByMonth y)
-        {
-            bool Result = false;
-            if (x.Salary == y.Salary && 
-                x.Year == y.Year && 
-                x.Cardnum == y.Cardnum &&
-                x.Month == y.Month)
-                Result = true;
-            return Result;
-        }
-        public int GetHashCode(SalaryByMonth obj)
-        {
-            return obj.Cardnum;
-        }
+            { EduLevel.High, "Высшее" },
+            { EduLevel.Middle, "Среднее" },
+            { EduLevel.None, "Без образования" }
+        };
     }
 }
