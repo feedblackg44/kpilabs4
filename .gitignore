@@ -513,5 +513,5 @@ crashlytics-build.properties
 fabric.properties
 
 # Data
-.xlsx
-.csv
+*.xlsx
+*.csv
