@@ -83,9 +83,12 @@ namespace Lab2
                 Console.WriteLine("Специальность номер {0}", i+1);
                 Speciality speciality = new Speciality();
                 Console.WriteLine("Введите название специальности: ");
-                speciality.Name = Console.ReadLine();
+                string name = Console.ReadLine();
+                speciality.Name = string.IsNullOrEmpty(name) ? "Без названия" : name;
                 Console.WriteLine("Введите номер специальности: ");
-                speciality.Number = int.Parse(Console.ReadLine());
+                if (!int.TryParse(Console.ReadLine(), out int num))
+                    num = 0;
+                speciality.Number = num;
                 specialitiesTable.Add(speciality);
                 Console.Clear();
                 Console.WriteLine("Специальность успешно добавлена!\n");
@@ -95,7 +98,8 @@ namespace Lab2
         private void CreateWorkers(string filename)
         {
             Console.WriteLine("Введите нужное количество работников: ");
-            int amount = int.Parse(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out int amount))
+                amount = 1;
 
             Console.Clear();
             List<Worker> workersTable = new List<Worker>();
@@ -104,18 +108,27 @@ namespace Lab2
                 Console.WriteLine("Работник номер {0}", i+1);
                 Worker worker = new Worker();
                 Console.WriteLine("Введите имя: ");
-                worker.Name = Console.ReadLine();
+                string name = Console.ReadLine();
+                worker.Name = string.IsNullOrEmpty(name) ? "Без имени" : name;
                 Console.WriteLine("Введите фамилию: ");
-                worker.Surname = Console.ReadLine();
+                string surname = Console.ReadLine();
+                worker.Surname = string.IsNullOrEmpty(surname) ? "Без фамилии" : surname;
                 Console.WriteLine("Введите отчество: ");
-                worker.Patronymic = Console.ReadLine();
+                string patronymic = Console.ReadLine();
+                worker.Patronymic = string.IsNullOrEmpty(patronymic) ? "Без отчества" : patronymic;
                 Console.WriteLine("Введите дату рождения (гггг-мм-дд): ");
-                worker.Birthdate = DateTime.Parse(Console.ReadLine());
+                if (!DateTime.TryParse(Console.ReadLine(), out DateTime date))
+                    date = DateTime.Parse("2002-01-01");
+                worker.Birthdate = date;
                 worker.Cardnum = i + 1;
                 Console.WriteLine("Введите дату начала работы сотрудника (гггг-мм-дд): ");
-                worker.WorkStartDate = DateTime.Parse(Console.ReadLine());
+                if (!DateTime.TryParse(Console.ReadLine(), out DateTime workdate))
+                    workdate = DateTime.Now;
+                worker.WorkStartDate = workdate;
                 Console.WriteLine("Введите уровень образования (0 - None, 1 - Middle, 2 - High): ");
-                worker.Education = (EduLevel)int.Parse(Console.ReadLine());
+                if (!int.TryParse(Console.ReadLine(), out int num))
+                    num = 0;
+                worker.Education = (EduLevel)num;
                 workersTable.Add(worker);
                 Console.Clear();
                 Console.WriteLine("Работник успешно добавлен!\n");
@@ -125,7 +138,8 @@ namespace Lab2
         private void CreateSalaries(string filename)
         {
             Console.WriteLine("Введите нужное количество записей зарплат: ");
-            int amount = int.Parse(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out int amount))
+                amount = 1;
 
             Console.Clear();
             List<SalaryByMonth> salaryTable = new List<SalaryByMonth>();
@@ -134,13 +148,21 @@ namespace Lab2
                 Console.WriteLine("Запись номер {0}", i+1);
                 SalaryByMonth salaryByMonth = new SalaryByMonth();
                 Console.WriteLine("Введите номер карты: ");
-                salaryByMonth.Cardnum = int.Parse(Console.ReadLine());
+                if (!int.TryParse(Console.ReadLine(), out int num1))
+                    num1 = 0;
+                salaryByMonth.Cardnum = num1;
                 Console.WriteLine("Введите месяц: ");
-                salaryByMonth.Month = (Months)int.Parse(Console.ReadLine());
+                if (!int.TryParse(Console.ReadLine(), out int num2))
+                    num2 = 0;
+                salaryByMonth.Month = (Months)num2;
                 Console.WriteLine("Введите год: ");
-                salaryByMonth.Year = int.Parse(Console.ReadLine());
+                if (!int.TryParse(Console.ReadLine(), out int num3))
+                    num3 = 0;
+                salaryByMonth.Year = num3;
                 Console.WriteLine("Введите зарплату: ");
-                salaryByMonth.Salary = int.Parse(Console.ReadLine());
+                if (!int.TryParse(Console.ReadLine(), out int num4))
+                    num4 = 0;
+                salaryByMonth.Salary = num4;
                 salaryTable.Add(salaryByMonth);
                 Console.Clear();
                 Console.WriteLine("Запись успешно добавлена!\n");
@@ -150,7 +172,8 @@ namespace Lab2
         private void CreateLinks(string filename)
         {
             Console.WriteLine("Введите нужное количество записей в связывающей таблице: ");
-            int amount = int.Parse(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out int amount))
+                amount = 1;
 
             Console.Clear();
             List<WorkerSpecLink> linksTable = new List<WorkerSpecLink>();
@@ -159,9 +182,13 @@ namespace Lab2
                 Console.WriteLine("Запись номер {0}", i + 1);
                 WorkerSpecLink link = new WorkerSpecLink();
                 Console.WriteLine("Введите номер карты: ");
-                link.Cardnum = int.Parse(Console.ReadLine());
+                if (!int.TryParse(Console.ReadLine(), out int num1))
+                    num1 = 0;
+                link.Cardnum = num1;
                 Console.WriteLine("Введите номер специальности: ");
-                link.Specnum = int.Parse(Console.ReadLine());
+                if (!int.TryParse(Console.ReadLine(), out int num2))
+                    num2 = 0;
+                link.Specnum = num2;
                 linksTable.Add(link);
                 Console.Clear();
                 Console.WriteLine("Запись успешно добавлена!\n");

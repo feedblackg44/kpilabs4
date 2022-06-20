@@ -11,13 +11,9 @@ namespace Classes
     {
         public bool Equals(XElement x, XElement y)
         {
-            bool Result = false;
-            if (int.Parse(x.Element("salary").Value) == int.Parse(y.Element("salary").Value) &&
-                int.Parse(x.Element("year").Value) == int.Parse(y.Element("year").Value) &&
-                int.Parse(x.Element("cardnum").Value) == int.Parse(y.Element("cardnum").Value) &&
-                Tools.EduParse(x.Element("month").Value) == Tools.EduParse(y.Element("month").Value))
-                Result = true;
-            return Result;
+            return int.Parse(x.Element("salary").Value) == int.Parse(y.Element("salary").Value) &&
+                   int.Parse(x.Element("year").Value) == int.Parse(y.Element("year").Value) &&
+                   Tools.EduParse(x.Element("month").Value) == Tools.EduParse(y.Element("month").Value);
         }
         public int GetHashCode(XElement obj)
         {

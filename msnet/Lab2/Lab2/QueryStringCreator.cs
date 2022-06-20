@@ -18,137 +18,137 @@ namespace Lab2
         public string AllWorkers()
         {
             var query = _queries.QueryAllWorkers();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += formatWorker(x) + '\n';
-            return output;
+                output.Append(FormatWorker(x) + '\n');
+            return output.ToString();
         }
         public string AllNames()
         {
             var query = _queries.QueryAllNames();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += x.ToString() + '\n';
-            return output;
+                output.Append(x.ToString() + '\n');
+            return output.ToString();
         }
         public string NewObj()
         {
             var query = _queries.QueryNewObj();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += string.Format("( id = {0}, Name = {1} )\n", 
-                                        x.Element("personnelid").Value, x.Element("fullname").Value);
-            return output;
+                output.Append(string.Format("( id = {0}, Name = {1} )\n", 
+                                        x.Element("personnelid").Value, x.Element("fullname").Value));
+            return output.ToString();
         }
         public string Where()
         {
             var query = _queries.QueryWhere();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += formatWorker(x) + '\n';
-            return output;
+                output.Append(FormatWorker(x) + '\n');
+            return output.ToString();
         }
         public string Sort()
         {
             var query = _queries.QuerySort();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += formatWorker(x) + '\n';
-            return output;
+                output.Append(FormatWorker(x) + '\n');
+            return output.ToString();
         }
         public string Cartesian()
         {
             var query = _queries.QueryCartesian();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += string.Format("( Param1 = {0}, Param2 = {1} )\n", 
-                                        x.Element("param1").Value, x.Element("param2").Value);;
-            return output;
+                output.Append(string.Format("( Param1 = {0}, Param2 = {1} )\n", 
+                                        x.Element("param1").Value, x.Element("param2").Value));
+            return output.ToString();
         }
         public string InnerJoin()
         {
             var query = _queries.QueryInnerJ();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += string.Format("( Year = {0}, Month = {1}, Surname = {2}, Salary = {3} )\n",
+                output.Append(string.Format("( Year = {0}, Month = {1}, Surname = {2}, Salary = {3} )\n",
                                         x.Element("year").Value, x.Element("month").Value,
-                                        x.Element("surname").Value, x.Element("salary").Value);
-            return output;
+                                        x.Element("surname").Value, x.Element("salary").Value));
+            return output.ToString();
         }
         public string GroupJoin()
         {
             var query = _queries.QueryGroupJ();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
             {
-                output += string.Format("{0} c персональным номером {1}\n", 
+                output.Append(string.Format("{0} c персональным номером {1}\n", 
                                         x.Element("name").Value,
-                                        x.Element("personnelid").Value);
+                                        x.Element("personnelid").Value));
                 foreach (var y in x.Element("table").Elements("salarybymonth"))
-                    output += "  " + formatSalary(y) + '\n';
+                    output.Append("  " + FormatSalary(y) + '\n');
             }
-            return output;
+            return output.ToString();
         }
         public string CrossJoin()
         {
             var query = _queries.QueryCrossJ();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += string.Format("( Worker = {0}, Spec = {1} )\n",
-                                        x.Element("worker").Value, x.Element("spec").Value);
-            return output;
+                output.Append(string.Format("( Worker = {0}, Spec = {1} )\n",
+                                        x.Element("worker").Value, x.Element("spec").Value));
+            return output.ToString();
         }
         public string OuterJoin()
         {
             var query = _queries.QueryOuterJ();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += string.Format("( Surname = {0}, Salary = {1} )\n",
-                                        x.Element("surname").Value, x.Element("salary").Value);
-            return output;
+                output.Append(string.Format("( Surname = {0}, Salary = {1} )\n",
+                                        x.Element("surname").Value, x.Element("salary").Value));
+            return output.ToString();
         }
         public string Distinct()
         {
             var query = _queries.QueryDistinct();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += x.ToString() + '\n';
-            return output;
+                output.Append(x.ToString() + '\n');
+            return output.ToString();
         }
         public string Union()
         {
             var query = _queries.QueryUnion();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += formatSalary(x) + '\n';
-            return output;
+                output.Append(FormatSalary(x) + '\n');
+            return output.ToString();
         }
         public string Concat()
         {
             var query = _queries.QueryConcat();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += formatSalary(x) + '\n';
-            return output;
+                output.Append(FormatSalary(x) + '\n');
+            return output.ToString();
         }
         public string Intersect()
         {
             var query = _queries.QueryIntersect();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += formatSalary(x) + '\n';
-            return output;
+                output.Append(FormatSalary(x) + '\n');
+            return output.ToString();
         }
         public string Grouping()
         {
             var query = _queries.QueryGrouping();
-            string output = "";
+            StringBuilder output = new StringBuilder();
             foreach (var x in query)
-                output += "На карту " + x.Element("key").Value +
-                          " за весь период было зачислено " + x.Element("sum").Value + '\n';
-            return output;
+                output.Append("На карту " + x.Element("key").Value +
+                          " за весь период было зачислено " + x.Element("sum").Value + '\n');
+            return output.ToString();
         }
-        private string formatWorker(XElement x)
+        private string FormatWorker(XElement x)
         {
             string curEdu = Tools.ruEduLevel[Tools.EduParse(x.Element("education").Value)];
             string temp = string.Format(
@@ -164,7 +164,7 @@ namespace Lab2
                 x.Element("workstartdate").Value, x.Element("personnelid").Value);
             return temp;
         }
-        private string formatSalary(XElement x)
+        private string FormatSalary(XElement x)
         {
             string toPrint = string.Format(
                 "{0} за {1} {2} на карту номер {3}",

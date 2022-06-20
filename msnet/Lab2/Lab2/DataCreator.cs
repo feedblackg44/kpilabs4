@@ -28,8 +28,7 @@ namespace Lab2
         }
         public void CreateWorkers(List<Worker> workers, string filename)
         {
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
+            XmlWriterSettings settings = new XmlWriterSettings() { Indent = true };
             using (XmlWriter writer = XmlWriter.Create(string.Format("{0}.xml", filename), settings))
             {
                 writer.WriteStartElement(filename);
@@ -56,8 +55,7 @@ namespace Lab2
         }
         public void CreateSalary(List<SalaryByMonth> salaries, string filename)
         {
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
+            XmlWriterSettings settings = new XmlWriterSettings() { Indent = true };
             using (XmlWriter writer = XmlWriter.Create(string.Format("{0}.xml", filename), settings))
             {
                 writer.WriteStartElement(filename);
@@ -75,8 +73,7 @@ namespace Lab2
         }
         public void CreateLinks(List<WorkerSpecLink> links, string filename)
         {
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
+            XmlWriterSettings settings = new XmlWriterSettings() { Indent = true };
             using (XmlWriter writer = XmlWriter.Create(string.Format("{0}.xml", filename), settings))
             {
                 writer.WriteStartElement(filename);
