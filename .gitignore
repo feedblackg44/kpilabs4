@@ -515,6 +515,5 @@ fabric.properties
 # Data
 *.xlsx
 *.csv
-*.docx
 
 /stat/
