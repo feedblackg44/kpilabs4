@@ -15,7 +15,6 @@ namespace Lab5
             _leftExpression = left;
             _rightExpression = right;
         }
-
         public abstract double Interpret(Context context);
     }
 }

@@ -19,24 +19,22 @@ namespace Lab5
         }
         private IExpression StringParse(string input)
         {
-            for (int i = input.Length - 1; i >= 0; i--)
-            {
-                if (input[i] == '+')
-                    return new AddExpression(StringParse(input.Substring(0, i)),
-                                             StringParse(input.Substring(i + 1, input.Length - i - 1)));
-                else if (input[i] == '-')
-                    return new SubtractExpression(StringParse(input.Substring(0, i)),
-                                                  StringParse(input.Substring(i + 1, input.Length - i - 1)));
-            }
-            for (int i = input.Length - 1; i >= 0; i--)
-            {
-                if (input[i] == '*')
-                    return new MultipExpression(StringParse(input.Substring(0, i)),
-                                                StringParse(input.Substring(i + 1, input.Length - i - 1)));
-                else if (input[i] == '/')
-                    return new DivideExpression(StringParse(input.Substring(0, i)),
-                                                StringParse(input.Substring(i + 1, input.Length - i - 1)));
-            }
+            int i = input.LastIndexOf('+');
+            if (i != -1)
+                return new AddExpression(StringParse(input.Substring(0, i)),
+                                         StringParse(input.Substring(i + 1, input.Length - i - 1)));
+            i = input.LastIndexOf('-');
+            if (i != -1)
+                return new SubtractExpression(StringParse(input.Substring(0, i)),
+                                              StringParse(input.Substring(i + 1, input.Length - i - 1)));
+            i = input.LastIndexOf('*');
+            if (i != -1)
+                return new MultipExpression(StringParse(input.Substring(0, i)),
+                                            StringParse(input.Substring(i + 1, input.Length - i - 1)));
+            i = input.LastIndexOf('/');
+            if (i != -1)
+                return new DivideExpression(StringParse(input.Substring(0, i)),
+                                            StringParse(input.Substring(i + 1, input.Length - i - 1)));
             _context.SetVariable(_counter.ToString(), double.Parse(input));
             return new NumberExpression(_counter++.ToString());
         }

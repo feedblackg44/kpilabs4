@@ -9,9 +9,9 @@ namespace Lab5
     public class NumberExpression : IExpression
     {
         private string _name;
-        public NumberExpression(string variableName)
+        public NumberExpression(string varName)
         {
-            _name = variableName;
+            _name = varName;
         }
         public double Interpret(Context context)
         {
