@@ -49,33 +49,30 @@ namespace Lab3
             Director director = new Director();
             Tester tester = new Tester();
 
-            // Bus //
-            BusBuilder bBuilder = new BusBuilder();
-            director.MakeBus(bBuilder);
-            Bus bus;
             try
             {
+                // Bus //
+                Console.WriteLine("Проверим создание автобуса:");
+                
+                BusBuilder bBuilder = new BusBuilder();
+                director.MakeBus(bBuilder);
+                Bus bus;
+
                 tester.Begin(bBuilder, drivers, people);
                 bus = bBuilder.GetResult();
                 Console.WriteLine("Перед отправкой пассажиры заплатили {0} гривен.", bus.Money);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            Console.ReadKey();
+                Console.ReadKey();
 
-            // Taxi //
-            Console.Clear();
+                // Taxi //
+                Console.Clear();
+                Console.WriteLine("Проверим создание такси:");
 
-            TaxiBuilder tBuilder = new TaxiBuilder();
-            director.MakeTaxi(bBuilder);
-            Taxi taxi;
-            try
-            {
+                TaxiBuilder tBuilder = new TaxiBuilder();
+                director.MakeTaxi(tBuilder);
+                Taxi taxi;
                 tester.Begin(tBuilder, drivers, people);
                 taxi = tBuilder.GetResult();
-                Console.WriteLine("Перед отправкой пассажирам потребовалось {0} детских сидений.", taxi.ChildSeats);
+                Console.WriteLine("Перед отправкой пассажирам потребовалось столько детских сидений: {0}.", taxi.ChildSeats);
             }
             catch (Exception ex)
             {

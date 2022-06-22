@@ -35,7 +35,7 @@ namespace Lab3
         public void AddPassenger(Passenger passenger)
         {
             if (_bus.Passengers.Count >= _bus.PeopleLimit)
-                throw new PeopleOverflowException("Такси заполнено!");
+                throw new PeopleOverflowException("Автобус заполнен!");
             _bus.Money += _bus.Prices[passenger.Benefit];
             _bus.Passengers.Add(passenger);
         }
