@@ -14,7 +14,12 @@ namespace Lab5
         { 
             context = _context = new Context();
             _counter = 0;
-            string toParse = input.Replace(" ", "").Replace(".", ",");
+            string toParse = input.Replace(" ", "")
+                                  .Replace(".", ",")
+                                  .Replace("*-", "$")
+                                  .Replace("/-", "&")
+                                  .Replace("*+", "*")
+                                  .Replace("/+", "/");
             return StringParse(toParse);
         }
         private IExpression StringParse(string input)
@@ -27,6 +32,14 @@ namespace Lab5
             if (i != -1)
                 return new SubtractExpression(StringParse(input.Substring(0, i)),
                                               StringParse(input.Substring(i + 1, input.Length - i - 1)));
+            i = input.LastIndexOf('$');
+            if (i != -1)
+                return new MultipExpression(StringParse(input.Substring(0, i)),
+                                            StringParse('-' + input.Substring(i + 1, input.Length - i - 1)));
+            i = input.LastIndexOf("&");
+            if (i != -1)
+                return new DivideExpression(StringParse(input.Substring(0, i)),
+                                            StringParse('-' + input.Substring(i + 1, input.Length - i - 1)));
             i = input.LastIndexOf('*');
             if (i != -1)
                 return new MultipExpression(StringParse(input.Substring(0, i)),
@@ -35,7 +48,8 @@ namespace Lab5
             if (i != -1)
                 return new DivideExpression(StringParse(input.Substring(0, i)),
                                             StringParse(input.Substring(i + 1, input.Length - i - 1)));
-            _context.SetVariable(_counter.ToString(), double.Parse(input));
+            double.TryParse(input, out double result);
+            _context.SetVariable(_counter.ToString(), result);
             return new NumberExpression(_counter++.ToString());
         }
     }
